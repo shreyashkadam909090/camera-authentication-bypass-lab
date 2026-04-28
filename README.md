@@ -1,5 +1,6 @@
-<img width="1179" height="751" alt="image" src="https://github.com/user-attachments/assets/df595dbf-5ee1-4018-920f-8126049c4fe0" /># camera-authentication-bypass-lab
-This project simulates a camera streaming system with login authentication. User logs in, session is created, camera captures frames, sends them to the server, and displays live on viewer page. Demonstrates client-server flow and basic security weaknesses.
+# Camera-authentication-bypass-lab
+This project simulates a camera streaming system with login authentication. User logs in, session is created, camera captures frames, sends them to the server, and displays live on viewer page. It demonstrates client-server flow and basic security weaknesses.
+
 ---
 
 ## 🔄 How It Works
