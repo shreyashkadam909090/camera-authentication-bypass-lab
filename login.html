@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Login Page</h2>
+
+<p id="error" style="color:red;"></p>
+
+<form method="POST" action="/login">
+    Username: <input type="text" id="username" name="username"><br><br>
+    Password: <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Login">
+</form>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const error = params.get("error");
+const errorBox = document.getElementById("error");
+
+// show error
+if (error === "wrong") {
+    errorBox.innerText = " Wrong username or password";
+}
+if (error === "empty") {
+    errorBox.innerText = " Please fill username and password";
+}
+
+// 🔥 REMOVE ERROR WHEN USER TYPES
+document.getElementById("username").addEventListener("input", () => {
+    errorBox.innerText = "";
+});
+
+document.getElementById("password").addEventListener("input", () => {
+    errorBox.innerText = "";
+});
+</script>
+
+</body>
+</html>

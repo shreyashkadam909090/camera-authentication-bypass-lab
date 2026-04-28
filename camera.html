@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Camera (Sender)</h2>
+<video id="video" autoplay width="320"></video>
+
+<br><br>
+
+<button onclick="capture()">Capture</button>
+<button onclick="download()">Download</button>
+
+<br><br>
+
+<canvas id="canvas"></canvas>
+
+<script>
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+
+// start camera
+navigator.mediaDevices.getUserMedia({
+    video: { width: 320, height: 240 }
+})
+.then(stream => {
+    video.srcObject = stream;
+});
+
+// capture
+function capture() {
+    canvas.width = 320;
+    canvas.height = 240;
+    let ctx = canvas.getContext("2d");
+    ctx.drawImage(video, 0, 0);
+}
+
+// download
+function download() {
+    let link = document.createElement("a");
+    link.download = "capture.png";
+    link.href = canvas.toDataURL();
+    link.click();
+}
+
+// stream to server
+setInterval(() => {
+    let tempCanvas = document.createElement("canvas");
+    tempCanvas.width = 320;
+    tempCanvas.height = 240;
+
+    let ctx = tempCanvas.getContext("2d");
+    ctx.drawImage(video, 0, 0);
+
+    let data = tempCanvas.toDataURL("image/jpeg", 0.5);
+
+    fetch("/upload", {
+        method: "POST",
+        body: data
+    });
+
+}, 100);
+</script>
+
+</body>
+</html>
