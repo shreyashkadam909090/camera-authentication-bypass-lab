@@ -3,7 +3,7 @@ This project simulates a camera streaming system with login authentication. User
 
 ---
 
-## 🔄 How It Works
+## How It Works
 
 1. User opens the application in browser  
 2. Redirected to login page  
